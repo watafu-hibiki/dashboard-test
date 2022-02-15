@@ -4,5 +4,8 @@ export interface InquiryExt extends Inquiry {
   inquiryMonth: string;
   category: string;
   subcategory: string;
+  area: string,
+  legalAdviser: string,
+  rating: number,
   elapsedResponseTime: number;
 }

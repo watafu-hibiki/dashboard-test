@@ -4,8 +4,45 @@
 <hr />
 {{ monthOccurences$ | async | json }}
 <hr />
-{{ monthOcurrencesExt$ | async | json }}
+{{ monthOccurencesExt$ | async | json }}
 <hr />
+{{ categoryOccurences$ | async | json }}
+<hr />
+{{ categoryOccurencesExt$ | async | json }}
+<hr />
+{{ subcategoryOccurences$ | async | json }}
+<hr />
+{{ subcategoryOccurencesExt$ | async | json }}
+<hr />
+<hr />
+{{ areaOccurences$ | async | json }}
+<hr />
+{{ areaOccurencesExt$ | async | json }}
+<hr />
+{{ advisorsStats$ | async | json }}
+<hr />
+<table>
+  <tr>
+    <th>Advisor</th>
+    <th>Assigned inquiries</th>
+    <th>Avg. rating</th>
+    <th>Avg. response time</th>
+  </tr>
+  <tr *ngFor="let stats of advisorsStats$ | async | keyvalue">
+    <td>{{ stats.key }}</td>
+    <td>{{ stats.value.assignedInquiries }}</td>
+    <td>
+      {{ stats.value.rating / stats.value.assignedInquiries | number: "2.2-2" }}
+    </td>
+    <td>
+      {{
+        stats.value.elapsedResponseTime / stats.value.assignedInquiries
+          | number: "2.2-2"
+      }} hours
+    </td>
+  </tr>
+</table>
+
 <ul>
   <li *ngFor="let inquiry of inquiriesExt$ | async; index as i">
     {{ inquiry | json }}

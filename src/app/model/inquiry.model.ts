@@ -5,4 +5,6 @@ export interface Inquiry {
   idSubcategory: string;
   idArea: string;
   responseDate: Date;
+  idLegalAdvisor: string;
+  rating: number;
 }
